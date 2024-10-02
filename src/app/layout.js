@@ -12,7 +12,7 @@ export default async function RootLayout({ children }) {
   await connect();
   return (
     <html lang="en" className="h-full">
-      <body style={{backgroundImage : "url(bg.png)", backgroundRepeat : "no-repeat", backgroundSize : "100%"}} className = "h-full">{children}</body>
+      <body style={{backgroundImage : "url(bg.jpg)", backgroundRepeat : "no-repeat", backgroundSize : "cover", backdropFilter : "blur(2px)"}} className = "h-full">{children}</body>
     </html>
   );
 }

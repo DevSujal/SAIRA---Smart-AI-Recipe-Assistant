@@ -59,7 +59,7 @@ const HomePage = () => {
       </div>
       {response.map((item, index) => {
         return (
-          <div key={index} className="text-xl">
+          <div key={index} className="text-xl text-white">
             {item}
           </div>
         );
