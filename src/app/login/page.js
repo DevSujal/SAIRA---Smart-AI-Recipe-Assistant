@@ -12,7 +12,7 @@ const page = () => {
   };
 
   return (
-    <div className="relative flex justify-center items-center h-screen">
+    <div className="relative flex justify-center items-center h-[91vh]">
       <img
         src="bg.png"
         className="absolute z-0 object-cover object-left-top w-full h-full"
