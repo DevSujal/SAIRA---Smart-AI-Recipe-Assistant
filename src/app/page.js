@@ -8,6 +8,7 @@ const HomePage = async () => {
   if (!session) {
     redirect("/login");
   }
+  {console.log(session)}
 
   return (
     <div className="text-white w-full h-full">
@@ -22,14 +23,7 @@ const HomePage = async () => {
         />
       </div>
 
-      <div className="flex flex-col justify-center items-center w-full h-full">
-        <Input />
-        <div className="flex flex-wrap mt-10 w-4/5 gap-6">
-          {data.map(({ingredientName, ingredientImage}) => (
-            <img src={ingredientImage} alt={ingredientName} className="mix-blend-multiply"/>
-          ))}
-        </div>
-      </div>
+      <Input />
     </div>
   );
 };

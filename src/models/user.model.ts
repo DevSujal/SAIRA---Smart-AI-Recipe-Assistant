@@ -17,22 +17,14 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    refreshToken: {
-      type: String,
+    isOauth: {
+      type: Boolean,
+      default: false,
     },
   },
   { timestamps: true }
 );
 
-const hashLevel = 10;
-
-userSchema.pre("save", async function (next) {
-  if (this.isModified(this.password)) {
-    this.password = await bcrypt.hash(this.password, hashLevel);
-  }
-
-  next();
-});
 
 userSchema.methods.isPasswordCorrect = async function (password) {
   return await bcrypt.compare(password, this.password);
@@ -63,6 +55,6 @@ userSchema.methods.generateAccessToken = function () {
     }
   );
 };
-const userModel = mongoose.models.users || mongoose.model('users', userSchema);
+const User = mongoose.models.User || mongoose.model('User', userSchema);
 
-export default userModel;
+export default User;

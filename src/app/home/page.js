@@ -8,19 +8,19 @@ const HomePage = async () => {
     console.log('session');
     redirect("/");
   }
-
   return (
     <div>
       <div className="fixed">
-
+        {console.log(session)}
       <h1>{session?.user?.name}</h1>
-      <img
+      {/* <img
         src={session?.user?.image}
         alt={session?.user?.name}
         width={72}
         height={72}
         className="rounded-full"
         />
+        */}
         </div>
 
       <div className="flex justify-center items-center wfull h-full">
