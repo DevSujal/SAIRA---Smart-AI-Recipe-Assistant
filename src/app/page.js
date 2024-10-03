@@ -6,6 +6,10 @@ import { data } from "./data"
 import Image from "next/image";
 import "./globals.css";
 
+import PopularCategories from "./components/PopularCategories";
+import PopularRecipes from "./components/PopularRecipes";
+import Carousel from "./components/Carousel";
+
 const HomePage = async () => {
   const session = await auth();
   // if (!session) {
@@ -35,6 +39,34 @@ const HomePage = async () => {
     }
   ])
 
+  const popular_recipes = ([
+    {
+      image: "https://static.wixstatic.com/media/10df86_ad17b161877246d2bb35806a5e55a597~mv2.jpg/v1/fill/w_568,h_434,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/10df86_ad17b161877246d2bb35806a5e55a597~mv2.jpg",
+      title: "Grilled Veggie Delight",
+      description: "A delicious mix of grilled vegetables with mouth-watering flavors",
+      ingredients: ["🥕 Carrot", "🍆 Eggplant", "🧄 Garlic", "🥬 Spinach", "🍋 Lemon"]
+    },
+    {
+      image: "https://zardyplants.com/wp-content/uploads/2021/07/Vegan-Pasta-Primavera-04.jpg",
+      title: "Pasta Primavera",
+      description: "Fresh pasta tossed with vibrant veggies and a light sauce",
+      ingredients: ["🍅 Tomato", "🥦 Broccoli", "🧄 Garlic", "🧀 Parmesan", "🍋 Lemon"]
+    },
+    {
+      image: "https://www.thelastfoodblog.com/wp-content/uploads/2017/06/mexican-bean-salad-1.jpg",
+      title: "Mexican Bean Salad",
+      description: "A colorful and refreshing salad with a zesty dressing",
+      ingredients: ["🌽 Corn", "🫘 Black Beans", "🧅 Red Onion", "🌶️ Jalapeño", "🍋 Lime"]
+    },
+    {
+      image: "https://img.taste.com.au/hMi8EcPf/taste/2018/04/may-18_chicken-mushroom-stir-fry-3000x2000-136801-1.jpg",
+      title: "Mushroom Stir-Fry",
+      description: "Sautéed mushrooms with a flavorful Asian-inspired sauce",
+      ingredients: ["🍄 Mushrooms", "🧄 Garlic", "🧅 Onion", "🌱 Cilantro", "🌶️ Red Pepper"]
+    }
+  ]);
+  
+
   return (
     <div className="w-full h-full">
       <div className="topsimage relative w-full h-fit">
@@ -53,20 +85,8 @@ const HomePage = async () => {
         <h1 className="text-3xl font-bold text-center">Popular Categories</h1>
         <div className="flex justify-center gap-12 mt-14">
           {popular_craterias.map((item, index) => (
-            <div key={index} className=" group relative">
-              <div className="group-hover:rounded-xl rounded-full ease-in-out duration-500 transition-all  overflow-hidden w-52 h-52">
 
-                <img src={item.image} alt="" className="w-52 h-52 object-cover " />
-              </div>
-              <div className="absolute group-hover:rounded-xl rounded-full text-white text-lg   top-0 left-0 w-full h-full bg-black bg-opacity-50 group-hover:bg-opacity-0 ease-in-out duration-500 transition-all">
-
-                <div className="group-hover:translate-y-28 mt-24 text-center group-hover:text-left  group-hover:text-black">
-                  <h1 className="text-white group-hover:text-black ease-in-out duration-500 transition-all ">{item.title}</h1>
-                  <p className="text-sm group-hover:opacity-100 opacity-0 ease-out duration-500 transition-all">{item.description}</p>
-                </div>
-
-              </div>
-            </div>
+            <PopularCategories key={index} image={item.image} title={item.title} description={item.description} />
 
           ))}
 
@@ -80,149 +100,32 @@ const HomePage = async () => {
 
           <div className="left space-y-60">
 
-            <div className="relative food group text-white p-3 rounded-lg w-fit transition-all duration-500 ease-in-out shadow-lg hover:shadow-2xl transform hover:rotate-1">
-              <div className="flex gap-5 relative z-10">
-                <img
-                  src="/fp1.jpg"
-                  alt="food item image"
-                  className="w-56 h-56 object-cover rounded-lg transform transition-transform duration-500 ease-in-out group-hover:scale-110"
-                />
-                <div className="info w-[450px] h-full my-auto text-gray-800">
-                  <h1 className="text-2xl font-bold transition-all duration-500 ease-in-out group-hover:text-3xl">
-                    Vegetarian Pizza
-                  </h1>
-                  <p className="text-sm transition-opacity duration-500 ease-in-out group-hover:opacity-70">
-                    This is a vegetarian pizza with the most delightful toppings
-                  </p>
-                </div>
-              </div>
-
-              {/* Background extension and gradient effect */}
-              <div className="absolute inset-0 transition-all rounded-lg duration-700 ease-in-out z-0 animate-gradient"></div>
-
-              <div className="absolute left-0 w-full ingredients overflow-hidden transition-all duration-700 ease-in-out max-h-0 opacity-0 transform translate-y-5 group-hover:max-h-64 group-hover:opacity-100 group-hover:translate-y-0 mt-5 text-black p-5 rounded-lg shadow-lg bg-white">
-                <h1 className="font-bold">Ingredients:</h1>
-                <ul className="list-disc pl-5">
-                  <li>🍅 Tomato</li>
-                  <li>🧅 Onion</li>
-                  <li>🧀 Cheese</li>
-                  <li>🫒 Olives</li>
-                  <li>🌶️ Green Chilli</li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="relative food group text-white p-3 rounded-lg w-fit transition-all duration-500 ease-in-out shadow-lg hover:shadow-2xl transform hover:rotate-1">
-              <div className="flex gap-5 relative z-10">
-                <img
-                  src="/fp1.jpg"
-                  alt="food item image"
-                  className="w-56 h-56 object-cover rounded-lg transform transition-transform duration-500 ease-in-out group-hover:scale-110"
-                />
-                <div className="info w-[450px] h-full my-auto text-gray-800">
-                  <h1 className="text-2xl font-bold transition-all duration-500 ease-in-out group-hover:text-3xl">
-                    Vegetarian Pizza
-                  </h1>
-                  <p className="text-sm transition-opacity duration-500 ease-in-out group-hover:opacity-70">
-                    This is a vegetarian pizza with the most delightful toppings
-                  </p>
-                </div>
-              </div>
-
-              {/* Background extension and gradient effect */}
-              <div className="absolute inset-0 transition-all rounded-lg duration-700 ease-in-out z-0 animate-gradient"></div>
-
-              <div className="absolute left-0 w-full ingredients overflow-hidden transition-all duration-700 ease-in-out max-h-0 opacity-0 transform translate-y-5 group-hover:max-h-64 group-hover:opacity-100 group-hover:translate-y-0 mt-5 text-black p-5 rounded-lg shadow-lg bg-white">
-                <h1 className="font-bold">Ingredients:</h1>
-                <ul className="list-disc pl-5">
-                  <li>🍅 Tomato</li>
-                  <li>🧅 Onion</li>
-                  <li>🧀 Cheese</li>
-                  <li>🫒 Olives</li>
-                  <li>🌶️ Green Chilli</li>
-                </ul>
-              </div>
-            </div>
-
-
-
-
+            
+           
+            {popular_recipes.map((item, index) => (
+              index % 2 === 0 && (
+                <PopularRecipes key={index} image={item.image} title={item.title} description={item.description} ingredients={item.ingredients} rotate={"hover:rotate-1"} />
+              )
+            ))}
 
           </div>
-          <div className="right space-y-60 mt-64">
-
-
-
-            <div className="relative food group text-white p-3 rounded-lg w-fit transition-all duration-500 ease-in-out shadow-lg hover:shadow-2xl transform hover:-rotate-1">
-              <div className="flex gap-5 relative z-10">
-                <img
-                  src="/fp1.jpg"
-                  alt="food item image"
-                  className="w-56 h-56 object-cover rounded-lg transform transition-transform duration-500 ease-in-out group-hover:scale-110"
-                />
-                <div className="info w-[450px] h-full my-auto text-gray-800">
-                  <h1 className="text-2xl font-bold transition-all duration-500 ease-in-out group-hover:text-3xl">
-                    Vegetarian Pizza
-                  </h1>
-                  <p className="text-sm transition-opacity duration-500 ease-in-out group-hover:opacity-70">
-                    This is a vegetarian pizza with the most delightful toppings
-                  </p>
-                </div>
-              </div>
-
-              {/* Background extension and gradient effect */}
-              <div className="absolute inset-0 transition-all rounded-lg duration-700 ease-in-out z-0 animate-gradient"></div>
-
-              <div className="absolute left-0 w-full ingredients overflow-hidden transition-all duration-700 ease-in-out max-h-0 opacity-0 transform translate-y-5 group-hover:max-h-64 group-hover:opacity-100 group-hover:translate-y-0 mt-5 text-black p-5 rounded-lg shadow-lg bg-white">
-                <h1 className="font-bold">Ingredients:</h1>
-                <ul className="list-disc pl-5">
-                  <li>🍅 Tomato</li>
-                  <li>🧅 Onion</li>
-                  <li>🧀 Cheese</li>
-                  <li>🫒 Olives</li>
-                  <li>🌶️ Green Chilli</li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="relative food group text-white p-3 rounded-lg w-fit transition-all duration-500 ease-in-out shadow-lg hover:shadow-2xl transform hover:-rotate-1">
-              <div className="flex gap-5 relative z-10">
-                <img
-                  src="/fp1.jpg"
-                  alt="food item image"
-                  className="w-56 h-56 object-cover rounded-lg transform transition-transform duration-500 ease-in-out group-hover:scale-110"
-                />
-                <div className="info w-[450px] h-full my-auto text-gray-800">
-                  <h1 className="text-2xl font-bold transition-all duration-500 ease-in-out group-hover:text-3xl">
-                    Vegetarian Pizza
-                  </h1>
-                  <p className="text-sm transition-opacity duration-500 ease-in-out group-hover:opacity-70">
-                    This is a vegetarian pizza with the most delightful toppings
-                  </p>
-                </div>
-              </div>
-
-              {/* Background extension and gradient effect */}
-              <div className="absolute inset-0 transition-all rounded-lg duration-700 ease-in-out z-0 animate-gradient"></div>
-
-              <div className="absolute left-0 w-full ingredients overflow-hidden transition-all duration-700 ease-in-out max-h-0 opacity-0 transform translate-y-5 group-hover:max-h-64 group-hover:opacity-100 group-hover:translate-y-0 mt-5 text-black p-5 rounded-lg shadow-lg bg-white">
-                <h1 className="font-bold">Ingredients:</h1>
-                <ul className="list-disc pl-5">
-                  <li>🍅 Tomato</li>
-                  <li>🧅 Onion</li>
-                  <li>🧀 Cheese</li>
-                  <li>🫒 Olives</li>
-                  <li>🌶️ Green Chilli</li>
-                </ul>
-              </div>
-            </div>
-
+          <div className="right space-y-60 mt-64 my-52">
+          {popular_recipes.map((item, index) => (
+              index % 2 !== 0 && (
+                <PopularRecipes key={index} image={item.image} title={item.title} description={item.description} ingredients={item.ingredients} rotate={"hover:-rotate-1"} />
+              )
+            ))}
 
 
 
           </div>
         </div>
       </div>
+      <div className="flex items-center justify-center min-h-screen bg-gray-100">
+            {/* <Carousel /> */}
+        </div>
+      
+      
 
       <footer className="bg-black  text-white w-full h-52 mt-20"></footer>
     </div>
