@@ -1,3 +1,8 @@
+import React from "react";
+import FormContainer from "../components/FormContainer";
+
+const Page = () => {
+  return <FormContainer />;
 "use client";
 import { useRouter } from "next/navigation";
 import React from "react";
@@ -254,4 +259,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
