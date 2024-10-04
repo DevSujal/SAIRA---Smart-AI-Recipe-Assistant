@@ -67,6 +67,10 @@ const HomePage = async () => {
     }
   ]);
   
+  if (!session) {
+    redirect("/login");
+  }
+  {console.log(session)}
 
   return (
     <div className="w-full h-full">
@@ -131,6 +135,7 @@ const HomePage = async () => {
       <footer className="bg-black  text-white w-full h-52">
         <FooterComp/>
       </footer>
+      <Input />
     </div>
   );
 };

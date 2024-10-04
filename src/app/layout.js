@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
+import connect from "../dbconnect";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -9,13 +10,16 @@ export const metadata = {
   // favicon: "/logo_saira.png",
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  await connect();
   return (
     <html lang="en" >
       
       <body className={`${inter.className} `} >
         <Navbar/>
       {children}</body>
+    <html lang="en" className="h-full">
+      <body style={{backgroundImage : "url(bg.jpg)", backgroundRepeat : "no-repeat", backgroundSize : "cover", backdropFilter : "blur(2px)"}} className = "h-full">{children}</body>
     </html>
   );
 }

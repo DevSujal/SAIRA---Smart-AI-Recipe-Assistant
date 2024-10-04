@@ -6,7 +6,6 @@ const connect = async () => {
         const connection = mongoose.connection;
 
         connection.on("connected" , () => {
-            console.log("mongodb is connected to : " + process.env.MONGODB_URI);
             
         })
 
