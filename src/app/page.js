@@ -9,6 +9,7 @@ import "./globals.css";
 import PopularCategories from "./components/PopularCategories";
 import PopularRecipes from "./components/PopularRecipes";
 import Carousel from "./components/Carousel";
+import FooterComp from "./components/FooterComp";
 
 const HomePage = async () => {
   const session = await auth();
@@ -82,8 +83,8 @@ const HomePage = async () => {
       </div>
       <div className="popular_craterias mt-16">
 
-        <h1 className="text-3xl font-bold text-center">Popular Categories</h1>
-        <div className="flex justify-center gap-12 mt-14">
+        <h1 className="text-4xl font-bold text-center">Popular Categories</h1>
+        <div className="flex justify-center gap-12 mt-20">
           {popular_craterias.map((item, index) => (
 
             <PopularCategories key={index} image={item.image} title={item.title} description={item.description} />
@@ -94,8 +95,8 @@ const HomePage = async () => {
         </div>
       </div>
 
-      <div className="popular_recipes mt-20 p-4  bg-[#77c35b]">
-        <h1 className="text-3xl font-bold  py-10 text-center text-white">Popular Recipes</h1>
+      <div className="popular_recipes mt-20 p-4  bg-[#24931ccf]">
+        <h1 className="text-4xl font-bold  py-10 text-center text-white">Popular Recipes</h1>
         <div className="recipes flex justify-between">
 
           <div className="left space-y-60">
@@ -121,13 +122,15 @@ const HomePage = async () => {
           </div>
         </div>
       </div>
-      <div className="flex items-center justify-center min-h-screen bg-gray-100">
-            {/* <Carousel /> */}
+      <div className="flex items-center justify-center max-h-screen py-28 bg-gray-100">
+            <Carousel />
         </div>
       
       
 
-      <footer className="bg-black  text-white w-full h-52 mt-20"></footer>
+      <footer className="bg-black  text-white w-full h-52">
+        <FooterComp/>
+      </footer>
     </div>
   );
 };
