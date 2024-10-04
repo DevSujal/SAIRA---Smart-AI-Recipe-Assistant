@@ -30,7 +30,8 @@ const HomePage = () => {
   }
 
   return (
-    <div className="flex justify-center items-center flex-col w-full h-full">
+    <div className="flex justify-center items-center flex-col w-full bg-black h-full"
+    >
       <div className="fixed top-1 left-1">
         {/* <h1>{session?.user?.name}</h1> */}
         {/* <img
@@ -43,10 +44,10 @@ const HomePage = () => {
         */}
       </div>
       <div className="flex flex-col justify-center items-center w-full gap-5">
-        <input
+        <textarea
           type="text"
           placeholder="enter your prompt..."
-          className="rounded-full p-2 w-2/3 h-10 "
+          className="rounded p-2 w-2/3 h-36 "
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />

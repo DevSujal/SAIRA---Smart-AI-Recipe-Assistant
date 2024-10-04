@@ -13,7 +13,7 @@ const FormContainer = () => {
   };
 
   return (
-    <div className="relative flex justify-center items-center h-[91vh]">
+    <div className="relative flex justify-center items-center h-full">
       <img src="bg.png" className="absolute z-0 object-cover object-left-top w-full h-full" alt="Background" />
       <div className="relative z-10 flex min-w-[900px] gap-24 text-white bg-black bg-opacity-60 rounded-lg overflow-hidden">
         <LoginForm doSocialLogin={doSocialLogin} isVisible={isLogin} />

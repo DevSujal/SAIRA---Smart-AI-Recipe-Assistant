@@ -135,7 +135,6 @@ const HomePage = async () => {
       <footer className="bg-black  text-white w-full h-52">
         <FooterComp/>
       </footer>
-      <Input />
     </div>
   );
 };
