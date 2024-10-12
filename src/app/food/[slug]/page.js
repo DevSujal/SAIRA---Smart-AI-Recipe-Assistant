@@ -2,7 +2,7 @@ import React from 'react'
 
 const page = ({params}) => {
   return (
-    <div>{params.item}</div>
+    <div className='text-black text-4xl'>{params.slug}</div>
   )
 }
 

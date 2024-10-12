@@ -3,8 +3,12 @@ import React from 'react';
 import Logo from './Logo';
 import NavItem from './NavItem';
 import AuthButton from './AuthButton';
+import { auth } from '/src/auth';
 
-const Navbar = () => {
+const Navbar = async () => {
+  const session = await auth();
+  
+  
   return (
     <div className="bg-white text-black flex justify-between w-full z-50 px-5 py-3 items-center fixed">
       <div className="left flex gap-8 items-center">
@@ -17,12 +21,20 @@ const Navbar = () => {
           <NavItem label="Popular" />
         </div>
       </div>
-      <div className="right flex gap-7">
-        <AuthButton label="Login" />
-        <AuthButton label="Register" />
-        <div>
-          <img className="w-10" src="github-mark.svg" alt="profile picture" />
-        </div>
+      <div className="right flex gap-7 items-center">
+        {session ? (
+          <div className='flex items-center gap-3' >
+           
+            {session.user.name}
+            <img className="w-10 rounded-full"  src={session ?(session?.user?.image):"github-mark.svg"} alt="profile picture" />
+          </div>
+        ) : (<>
+          <AuthButton label="Login" />
+          <AuthButton label="Register" /></>
+        )}
+
+        
+        
       </div>
     </div>
   );
