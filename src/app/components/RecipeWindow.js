@@ -2,6 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import Stars from '../components/Stars'
 import Steps from '../components/Steps'
+import Nutritions from '../components/Nutritions'
 const RecipeWindow = ( {foodItem} ) => {
     const nutritions= [["Calories","kcal"],["Total Fat","g"],["Sodium","mg"],["Protein","g"],["Total Carbohydrate","g"],["Sugar ","g"],["Fiber","g"]]
     return (
@@ -25,17 +26,7 @@ const RecipeWindow = ( {foodItem} ) => {
                         <p className='px-3'>{foodItem.description}</p>
                     </div>
 
-                    <div className="Nutrients">
-                    <h2 className='border-b-2 border-[#57c233] font-bold w-fit pr-6  text-xl mb-3'>Nutritions</h2>
-                    <ul className='px-3 space-y-2 font-medium text-lg pr-4'>
-                        {nutritions.map((nutrition,index)=>(
-                            <li key={index} className='flex justify-between'>
-                                <span>{nutrition[0]}</span>
-                                <span>{foodItem.nutrition[index]} {nutrition[1]}</span>
-                            </li>
-                        ))}
-                        </ul>
-                    </div>
+                    <Nutritions nutritionData={foodItem.nutrition} />
                 </div>
             </div>
             <Steps ingridents={foodItem.ingredients} steps={foodItem.steps} />

@@ -31,12 +31,12 @@ const HomePage = async () => {
     },
     {
       image: "/fp5.jpg",
-      title: "Healthy deit",
+      title: "Healthy diet",
       description: "Recipes for good health"
     },
     {
       image: "/fp1.jpg",
-      title: "Vegetarian deit",
+      title: "Vegetarian diet",
       description: "Recipes for good health"
     }
   ])
