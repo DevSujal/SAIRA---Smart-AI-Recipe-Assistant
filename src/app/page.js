@@ -67,14 +67,14 @@ const HomePage = async () => {
       ingredients: ["🍄 Mushrooms", "🧄 Garlic", "🧅 Onion", "🌱 Cilantro", "🌶️ Red Pepper"]
     }
   ]);
-  
+
   if (!session) {
     redirect("/login");
   }
-  {console.log(session)}
+  { console.log(session) }
 
   return (
-    <div className="w-full h-full">
+    <div className="w-full">
       <div className="topsimage relative w-full h-fit">
 
         <img src="bg.png" alt="" className="w-full h-[520px]" />
@@ -83,7 +83,7 @@ const HomePage = async () => {
             <h1 className="text-4xl font-semibold">Welcome to Saira</h1>
             <p className="text-lg">A smart recipe A.I recipe assistant</p>
             <Link href={"/login"}>
-            <button className="bg-green-500 hover:bg-green-600  text-white px-4 py-2 rounded-md mt-4">Get Started &gt; </button>
+              <button className="bg-green-500 hover:bg-green-600  text-white px-4 py-2 rounded-md mt-4">Get Started &gt; </button>
             </Link>
           </div>
         </div>
@@ -108,8 +108,8 @@ const HomePage = async () => {
 
           <div className="left space-y-60">
 
-            
-           
+
+
             {popular_recipes.map((item, index) => (
               index % 2 === 0 && (
                 <PopularRecipes key={index} image={item.image} title={item.title} description={item.description} ingredients={item.ingredients} rotate={"hover:rotate-1"} />
@@ -118,7 +118,7 @@ const HomePage = async () => {
 
           </div>
           <div className="right space-y-60 mt-64 my-52">
-          {popular_recipes.map((item, index) => (
+            {popular_recipes.map((item, index) => (
               index % 2 !== 0 && (
                 <PopularRecipes key={index} image={item.image} title={item.title} description={item.description} ingredients={item.ingredients} rotate={"hover:-rotate-1"} />
               )
@@ -130,14 +130,11 @@ const HomePage = async () => {
         </div>
       </div>
       <div className="flex items-center justify-center max-h-screen py-28 bg-gray-100">
-            <Carousel />
-        </div>
-      
-      
+        <Carousel />
+      </div>
 
-      <footer className="bg-black  text-white w-full h-52">
-        <FooterComp/>
-      </footer>
+
+
     </div>
   );
 };

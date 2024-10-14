@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
+import FooterComp from "./components/FooterComp";
 import connect from "../dbconnect";
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,7 +18,9 @@ export default async function RootLayout({ children }) {
       <body className={`${inter.className} h-full`} >
         <Navbar/>
         {children}
+        <FooterComp/>
       </body>
+      
     {/* <html lang="en" className="h-full">
       <body style={{backgroundImage : "url(bg.jpg)", backgroundRepeat : "no-repeat", backgroundSize : "cover", backdropFilter : "blur(2px)"}} className = "h-full">{children}</body> */}
     </html>

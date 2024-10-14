@@ -6,7 +6,7 @@ import Nutritions from '../components/Nutritions'
 const RecipeWindow = ( {foodItem} ) => {
     const nutritions= [["Calories","kcal"],["Total Fat","g"],["Sodium","mg"],["Protein","g"],["Total Carbohydrate","g"],["Sugar ","g"],["Fiber","g"]]
     return (
-        <div className=''>
+        <div className='bg-[#e4f5db]'>
             <div className='flex '>
                 <div className="left min-w-fit">
                     <img className='h-screen object-cover w-[980px] overflow-hidden' src={foodItem.image} alt={"props.name"} />

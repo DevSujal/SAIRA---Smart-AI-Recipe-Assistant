@@ -2,6 +2,7 @@
 import React from 'react'
 import RecipeWindow from '../components/RecipeWindow'
 import { useState } from 'react'
+import RecipeContainer from '../components/RecipesContainer'
 
 const page = ({}) => {
   const [foodItem, setfoodItem] = useState({
@@ -62,6 +63,7 @@ const page = ({}) => {
   return (
     <div >
         <RecipeWindow foodItem={foodItem}/>
+        <RecipeContainer tittle={"Similar recipes"} />
     </div>
   )
 }
