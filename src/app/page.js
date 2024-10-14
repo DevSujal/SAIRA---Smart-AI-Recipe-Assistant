@@ -10,6 +10,7 @@ import PopularCategories from "./components/PopularCategories";
 import PopularRecipes from "./components/PopularRecipes";
 import Carousel from "./components/Carousel";
 import FooterComp from "./components/FooterComp";
+import Link from "next/link";
 
 const HomePage = async () => {
   const session = await auth();
@@ -30,12 +31,12 @@ const HomePage = async () => {
     },
     {
       image: "/fp5.jpg",
-      title: "Healthy deit",
+      title: "Healthy diet",
       description: "Recipes for good health"
     },
     {
       image: "/fp1.jpg",
-      title: "Vegetarian deit",
+      title: "Vegetarian diet",
       description: "Recipes for good health"
     }
   ])
@@ -76,12 +77,14 @@ const HomePage = async () => {
     <div className="w-full h-full">
       <div className="topsimage relative w-full h-fit">
 
-        <img src="bg.png" alt="" className="w-full h-full" />
+        <img src="bg.png" alt="" className="w-full h-[520px]" />
         <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-40">
           <div className="absolute top-1/2 left-80 transform -translate-x-1/2 -translate-y-1/2 text-white text-center">
             <h1 className="text-4xl font-semibold">Welcome to Saira</h1>
             <p className="text-lg">A smart recipe A.I recipe assistant</p>
+            <Link href={"/login"}>
             <button className="bg-green-500 hover:bg-green-600  text-white px-4 py-2 rounded-md mt-4">Get Started &gt; </button>
+            </Link>
           </div>
         </div>
       </div>
