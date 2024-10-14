@@ -71,7 +71,7 @@ const HomePage = async () => {
   if (!session) {
     redirect("/login");
   }
-  {console.log(session)}
+  {console.log(session.user.image)}
 
   return (
     <div className="w-full h-full">
@@ -82,7 +82,7 @@ const HomePage = async () => {
           <div className="absolute top-1/2 left-80 transform -translate-x-1/2 -translate-y-1/2 text-white text-center">
             <h1 className="text-4xl font-semibold">Welcome to Saira</h1>
             <p className="text-lg">A smart recipe A.I recipe assistant</p>
-            <Link href={"/login"}>
+            <Link href={session ? "/home" : "/login"}>
             <button className="bg-green-500 hover:bg-green-600  text-white px-4 py-2 rounded-md mt-4">Get Started &gt; </button>
             </Link>
           </div>
