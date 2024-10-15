@@ -26,7 +26,7 @@ const Navbar = async () => {
           <div className='flex items-center gap-3' >
            
             {session.user.name}
-            <img className="w-10 rounded-full"  src={session ?(session?.user?.image):"github-mark.svg"} alt="profile picture" />
+            <img className="w-10 rounded-full"  src={(session?.user?.image) ? (session?.user?.image) : "profile.jpg"} alt="profile picture" />
           </div>
         ) : (<>
           <AuthButton label="Login" />

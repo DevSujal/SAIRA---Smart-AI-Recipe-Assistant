@@ -27,9 +27,19 @@ const HomePage = () => {
         throw new Error("Failed to generate prompt");
       }
 
-      const data = await res.json();
-      const generatedResponse = data.response.split(";");
-      setResponse(generatedResponse);
+      const data = await response.json();
+      const arr = data.response.split(";")
+
+      setResponse(arr);
+      
+      const response2 = await fetch("/api/generate-prompt", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ input }),
+      });
+
     } catch (error) {
       console.error("Error during generation:", error.message);
       setError("An error occurred while generating the prompt. Please try again.");
