@@ -27,18 +27,18 @@ const HomePage = () => {
         throw new Error("Failed to generate prompt");
       }
 
-      const data = await response.json();
-      const arr = data.response.split(";")
-
-      setResponse(arr);
-      
-      const response2 = await fetch("/api/generate-prompt", {
+      const {response} = await res.json();
+      const promptData = JSON.parse(response.substring(7, response.length - 5).trim());
+      const prompt = promptData?.dishName + " " + promptData?.ingredients.join(" ");
+      const response2 = await fetch("/api/generate-recipe", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ input }),
+        body: JSON.stringify({ input : prompt }),
       });
+
+      console.log(await response2.json());
 
     } catch (error) {
       console.error("Error during generation:", error.message);

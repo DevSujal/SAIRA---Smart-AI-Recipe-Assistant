@@ -52,9 +52,7 @@ async function run(input) {
 
     also if something else there give to me in the form of variable and value
     
-    give me these all by semi-colan separated values means ingredients : [] ; keywords : [] ; ingredientsAvoid : [] ; all
-    in these format insert the values in the array [] by comma separated values
-    here is the prompt from which you can extract the information:
+    these all should be in the form of object json
     
     ${input}`;
 

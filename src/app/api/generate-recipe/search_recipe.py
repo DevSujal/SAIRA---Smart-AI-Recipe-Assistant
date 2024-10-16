@@ -1,18 +1,26 @@
 import pickle
 import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
+import os
+import sys
+import json
 
 # Load the TF-IDF model and matrix
-with open('tfidf_model.pkl', 'rb') as file:
+script_dir = os.path.dirname(__file__)
+model_path = os.path.join(script_dir, 'tfidf_model.pkl')
+matrix_path = os.path.join(script_dir, 'tfidf_matrix.pkl')
+csv_path = os.path.join(script_dir, 'RAW_recipes.csv')
+
+with open(model_path, 'rb') as file:
     loaded_tfidf = pickle.load(file)
 
-with open('tfidf_matrix.pkl', 'rb') as file:
+with open(matrix_path, 'rb') as file:
     loaded_tfidf_matrix = pickle.load(file)
 
-# Load the recipe DataFrame (ensure you have this data available)
-df_subset = pd.read_csv('RAW_recipes.csv', encoding='ISO-8859-1')
+# Load the recipe DataFrame
+df_subset = pd.read_csv(csv_path, encoding='ISO-8859-1')
 
-# Clean the DataFrame as done previously
+# Clean the DataFrame
 df_subset['tags'] = df_subset['tags'].apply(lambda x: ' '.join(x.strip('[]').replace("'", "").split(',')))
 df_subset['ingredients'] = df_subset['ingredients'].apply(lambda x: ' '.join(x.strip('[]').replace("'", "").split(',')))
 
@@ -42,11 +50,11 @@ def search_recipes(user_input, top_n=10):
     
     return result
 
-# Example user input
-user_input = input("Enter the ingredients or recipe description: ")
+# Get user input from command line arguments
+user_input = sys.argv[1]  # First argument is the user input
 
 # Search for recipes based on user input
 recommended_recipes = search_recipes(user_input)
 
-# Display the recommended recipes
-print(recommended_recipes)
+# Convert the recommended recipes DataFrame to a JSON format and print
+print(recommended_recipes.to_json(orient="records"))
