@@ -10,8 +10,10 @@ export async function POST(req: NextRequest) {
   const body = await req.json();
   const { input } = body || "";
 
-  // Construct the Python command
-  const command = `python "C:\\Users\\SUJAL NIMJE\\OneDrive\\Desktop\\an-intelligent-system-for-receipe-assistance-using-artificial-intelligence\\src\\app\\api\\generate-recipe\\search_recipe.py" "${input}"`;
+  // Create an absolute path to the Python file
+  const pythonScriptPath = path.resolve('src/app/api/generate-recipe/search_recipe.py');
+
+  const command = `python "${pythonScriptPath}" "${input}"`;
   // return NextResponse.json({ command });
   // const command = `python ./scripts/search_recipe.py "${input}"`;
 

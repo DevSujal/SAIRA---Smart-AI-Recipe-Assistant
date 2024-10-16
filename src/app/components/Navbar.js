@@ -7,7 +7,7 @@ import { auth } from '/src/auth';
 
 const Navbar = async () => {
   const session = await auth();
-  
+  const image = session?.user?.image;
   
   return (
     <div className="bg-white text-black flex justify-between w-full z-50 px-5 py-3 items-center fixed">
@@ -26,7 +26,7 @@ const Navbar = async () => {
           <div className='flex items-center gap-3' >
            
             {session.user.name}
-            <img className="w-10 rounded-full"  src={(session?.user?.image) ? (session?.user?.image) : "profile.jpg"} alt="profile picture" />
+            <img className="w-10 rounded-full"  src={image ? image : "profile.jpg"} alt="profile picture" />
           </div>
         ) : (<>
           <AuthButton label="Login" />

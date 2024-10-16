@@ -50,6 +50,7 @@ async function run(input) {
     keyWords : Array
     ingredientsAvoid : Array
 
+    replace all the other language ingredients keywords or any thing with the english language words 
     also if something else there give to me in the form of variable and value
     
     these all should be in the form of object json
@@ -62,7 +63,7 @@ async function run(input) {
   return result.response.text();
 }
 
-export async function POST(req:NextRequest) {
+export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
     const { input } = body;
