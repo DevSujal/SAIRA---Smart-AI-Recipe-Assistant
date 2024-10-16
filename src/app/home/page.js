@@ -2,6 +2,7 @@
 import Image from "next/image";
 import React from "react";
 import RecipesContainer from "../components/RecipesContainer";
+import SpeechRecognition from "../components/SpeechRecognition";
 
 const HomePage = () => {
   const [input, setInput] = React.useState("");
@@ -73,7 +74,7 @@ const HomePage = () => {
 >
   Generate
 </button>
-
+    <SpeechRecognition />
 
           {/* Error Display */}
           {error && <p className="text-red-500">{error}</p>}
