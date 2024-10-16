@@ -3,8 +3,9 @@
 
 import { useEffect, useState } from 'react';
 
-const SpeechRecognition = () => {
-    const [transcript, setTranscript] = useState('');
+const SpeechRecognition = ({
+    setInput
+}) => {
     const [isListening, setIsListening] = useState(false);
     const [error, setError] = useState('');
 
@@ -20,7 +21,7 @@ const SpeechRecognition = () => {
 
         recognition.onresult = (event: any) => {
             const currentTranscript = Array.from(event.results).map(result => result[0].transcript).join('');
-            setTranscript(currentTranscript);
+            setInput(currentTranscript);
         };
 
         recognition.onerror = (event: { error: string }) => {
@@ -40,16 +41,13 @@ const SpeechRecognition = () => {
     }, [isListening]);
 
     return (
-        <div style={styles.container}>
             <button 
-                style={isListening ? styles.buttonActive : styles.button} 
+            style={isListening ? styles.buttonActive : styles.button} 
+            className='rounded-full'
                 onClick={() => setIsListening(!isListening)}
             >
                 {isListening ? 'Stop Listening' : 'Start Listening'}
             </button>
-            <p style={styles.transcript}>Transcript: {transcript}</p>
-            {error && <p style={styles.error}>Error: {error}</p>}
-        </div>
     );
 };
 
@@ -71,7 +69,7 @@ const styles: { [key: string]: React.CSSProperties } = {
         backgroundColor: '#0070f3',
         color: '#ffffff',
         border: 'none',
-        borderRadius: '5px',
+        // borderRadius: '5px',
         padding: '10px 20px',
         fontSize: '16px',
         cursor: 'pointer',
