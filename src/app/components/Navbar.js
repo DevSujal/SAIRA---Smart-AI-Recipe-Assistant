@@ -10,7 +10,7 @@ const Navbar = async () => {
   const image = session?.user?.image;
   
   return (
-    <div className="bg-white text-black flex justify-between w-full z-50 px-5 py-3 items-center fixed">
+    <div className="bg-[#fcfffc] text-black flex justify-between w-full z-50 px-5 py-3 items-center fixed">
       <div className="left flex gap-8 items-center">
         <Logo />
         <div className="flex gap-10">

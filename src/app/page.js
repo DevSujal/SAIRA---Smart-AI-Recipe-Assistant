@@ -14,10 +14,6 @@ import Link from "next/link";
 
 const HomePage = async () => {
   const session = await auth();
-  // if (!session) {
-  //   redirect("/login");
-  // }
-
   const popular_craterias = ([
     {
       image: "/fp2.jpg",
@@ -77,7 +73,7 @@ const HomePage = async () => {
     <div className="w-full">
       <div className="topsimage relative w-full h-fit">
 
-        <img src="bg.png" alt="" className="w-full h-[520px]" />
+        <img src="bg.png" alt="" className="w-full h-[500px] object-cover" />
         <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-40">
           <div className="absolute top-1/2 left-80 transform -translate-x-1/2 -translate-y-1/2 text-white text-center">
             <h1 className="text-4xl font-semibold">Welcome to Saira</h1>
@@ -88,10 +84,10 @@ const HomePage = async () => {
           </div>
         </div>
       </div>
-      <div className="popular_craterias mt-16">
+      <div className="popular_craterias pt-12 pb-24 my-20 bg-[#fff0dc]">
 
         <h1 className="text-4xl font-bold text-center">Popular Categories</h1>
-        <div className="flex justify-center gap-12 mt-20">
+        <div className="flex justify-center gap-12 mt-16">
           {popular_craterias.map((item, index) => (
 
             <PopularCategories key={index} image={item.image} title={item.title} description={item.description} />
@@ -102,7 +98,7 @@ const HomePage = async () => {
         </div>
       </div>
 
-      <div className="popular_recipes mt-20 p-4  bg-[#24931ccf]">
+      <div className="popular_recipes  p-4  bg-[#4CAF50]">
         <h1 className="text-4xl font-bold  py-10 text-center text-white">Popular Recipes</h1>
         <div className="recipes flex justify-between">
 
@@ -129,7 +125,7 @@ const HomePage = async () => {
           </div>
         </div>
       </div>
-      <div className="flex items-center justify-center max-h-screen py-28 bg-gray-100">
+      <div className="flex items-center justify-center max-h-screen py-24  ">
         <Carousel />
       </div>
 

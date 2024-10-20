@@ -18,15 +18,19 @@ export default async function RootLayout({
   await connect();
   return (
 
+
     <html lang="en" rel="icon" href="favicon.png" className="h-full">
       <SessionProvider>
         <body className={`${inter.className} h-full`}>
           <Navbar />
+          <div className="pt-[64px]">
+
           {children}
+          </div>
+          <FooterComp />
         </body>
       </SessionProvider>
-      {/* <html lang="en" className="h-full">
-      <body style={{backgroundImage : "url(bg.jpg)", backgroundRepeat : "no-repeat", backgroundSize : "cover", backdropFilter : "blur(2px)"}} className = "h-full">{children}</body> */}
+      
     </html>
   );
 }
