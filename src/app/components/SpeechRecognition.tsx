@@ -46,7 +46,11 @@ const SpeechRecognition = ({
             className='rounded-full'
                 onClick={() => setIsListening(!isListening)}
             >
-                {isListening ? 'Stop Listening' : 'Start Listening'}
+                 <img
+                src={isListening ? "mic_on.svg" : "mic_off.svg"} 
+                alt={isListening ? 'Mic On' : 'Mic Off'}
+                style={{ width: '24px', height: '24px' }} // Adjust size if needed
+            />
             </button>
     );
 };
