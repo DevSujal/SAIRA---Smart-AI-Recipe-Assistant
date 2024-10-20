@@ -2,12 +2,12 @@
 import Image from "next/image";
 import React from "react";
 import RecipesContainer from "../components/RecipesContainer";
+import SpeechRecognition from "../components/SpeechRecognition";
 
 const HomePage = () => {
   const [input, setInput] = React.useState("");
   const [response, setResponse] = React.useState([]);
   const [error, setError] = React.useState(null);
-
   async function handleClick() {
     if (!input) {
       setError("Input cannot be empty!");
@@ -27,12 +27,26 @@ const HomePage = () => {
         throw new Error("Failed to generate prompt");
       }
 
-      const data = await res.json();
-      const generatedResponse = data.response.split(";");
-      setResponse(generatedResponse);
+      const { response } = await res.json();
+      const promptData = JSON.parse(
+        response.substring(7, response.length - 5).trim()
+      );
+      const prompt =
+        promptData?.dishName + " " + promptData?.ingredients.join(" ");
+      const response2 = await fetch("/api/generate-recipe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ input: prompt }),
+      });
+
+      console.log(await response2.json());
     } catch (error) {
       console.error("Error during generation:", error.message);
-      setError("An error occurred while generating the prompt. Please try again.");
+      setError(
+        "An error occurred while generating the prompt. Please try again."
+      );
     }
   }
 
@@ -338,6 +352,7 @@ const HomePage = () => {
             value={input}
             onChange={(e) => setInput(e.target.value)}
           />
+
           <button
             onClick={handleClick}
             className="p-3 text-lg font-semibold text-white bg-gradient-to-r from-green-400 to-green-600 rounded-full shadow-xl hover:shadow-2xl hover:from-green-500 hover:to-green-700 transition-all duration-300 transform hover:scale-105 hover:ring-4 hover:ring-green-300 focus:outline-none"
@@ -345,6 +360,17 @@ const HomePage = () => {
             Generate
           </button>
 
+
+
+          <div className="flex gap-6">
+            <button
+              onClick={handleClick}
+              className="p-3 text-lg font-semibold text-white bg-gradient-to-r from-green-400 to-green-600 rounded-full shadow-xl hover:shadow-2xl hover:from-green-500 hover:to-green-700 transition-all duration-300 transform hover:scale-105 hover:ring-4 hover:ring-green-300 focus:outline-none"
+            >
+              Generate
+            </button>
+            <SpeechRecognition setInput={setInput} />
+          </div>
 
           {/* Error Display */}
           {error && <p className="absolute bottom-28 bg-white rounded-md px-3  py-1 bg-opacity-80  text-red-600 text-lg font-bold">{error}</p>}

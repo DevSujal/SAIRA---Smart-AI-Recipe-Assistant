@@ -50,11 +50,10 @@ async function run(input) {
     keyWords : Array
     ingredientsAvoid : Array
 
+    replace all the other language ingredients keywords or any thing with the english language words 
     also if something else there give to me in the form of variable and value
     
-    give me these all by semi-colan separated values means ingredients : [] ; keywords : [] ; ingredientsAvoid : [] ; all
-    in these format insert the values in the array [] by comma separated values
-    here is the prompt from which you can extract the information:
+    these all should be in the form of object json
     
     ${input}`;
 
@@ -64,7 +63,7 @@ async function run(input) {
   return result.response.text();
 }
 
-export async function POST(req:NextRequest) {
+export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
     const { input } = body;
