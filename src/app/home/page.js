@@ -347,7 +347,7 @@ const HomePage = () => {
 
 
           {/* Error Display */}
-          {error && <p className="absolute bottom-28 bg-white rounded-md px-3  py-1 bg-opacity-70  text-red-600 text-lg font-bold">{error}</p>}
+          {error && <p className="absolute bottom-28 bg-white rounded-md px-3  py-1 bg-opacity-80  text-red-600 text-lg font-bold">{error}</p>}
         </div>
       </div>
 
