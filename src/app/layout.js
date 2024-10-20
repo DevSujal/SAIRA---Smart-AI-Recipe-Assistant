@@ -15,9 +15,12 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en" rel="icon" href = "favicon.png" className="h-full">
       
-      <body className={`${inter.className} h-full`} >
+      <body className={`${inter.className} h-full `} >
         <Navbar/>
+        <div className="pt-[64px]">
+
         {children}
+        </div>
         <FooterComp/>
       </body>
       
