@@ -7,7 +7,11 @@ import { auth } from '/src/auth';
 
 const Navbar = async () => {
   const session = await auth();
-  const image = session?.user?.image;
+  let image = false;
+  const temp = session?.user?.image
+    if(temp != undefined)
+      image = temp;
+      console.log("image : ", image)
   
   return (
     <div className="bg-[#fcfffc] text-black flex justify-between w-full z-50 px-5 py-3 items-center fixed">
@@ -25,7 +29,7 @@ const Navbar = async () => {
         {session ? (
           <div className='flex items-center gap-3' >
            
-            {session.user.name}
+            {session?.user?.name}
             <img className="w-10 rounded-full"  src={image ? image : "profile.jpg"} alt="profile picture" />
           </div>
         ) : (<>
