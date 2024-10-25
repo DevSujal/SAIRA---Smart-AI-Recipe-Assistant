@@ -25,13 +25,13 @@ const RecipesContainer = (props) => {
   }, [props.recipes]);
 
   return (
-    <div className="bg-[#fff0dc] py-12 px-5 ">
+    <div className="bg-[#fff0dc] py-12 px-5">
       <h1 className="text-4xl font-bold text-center mb-8 text-[#333]  animate-fade-in-down">
         {props.tittle}
       </h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 animate-fade-in-up">
         {props.recipes && props.recipes.map((recipe, index) => (
-          <div key={index} className="transform hover:scale-105 transition-transform duration-500">
+          <div key={index} onClick={()=>{props.setCurrentRecipe(recipe.name)}} className="transform hover:scale-105 transition-transform duration-500">
             <RecipeCard
               image={randomValues[index]?.image || recipes_images[0]} // Fallback to a default image
               rating={randomValues[index]?.rating || 'No Rating'}

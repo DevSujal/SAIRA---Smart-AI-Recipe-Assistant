@@ -8,7 +8,7 @@ const Steps = (props) => {
       {/* Ingredients Section */}
       <div className="ingredients pb-8">
         <h2 className="border-b-2 border-[#4CAF50] font-bold text-2xl mb-4 ">Ingredients</h2>
-        <ul className="px-4 flex flex-col gap-3 list-decimal font-medium text-lg text-gray-700">
+        <ul className="px-4 flex max-h-[550px] flex-wrap flex-col gap-3 list-decimal font-medium text-lg text-gray-700">
           {props.ingredients.map((ingredient, index) => (
             <IngridentItem key={index}>{ingredient}</IngridentItem>
           ))}
