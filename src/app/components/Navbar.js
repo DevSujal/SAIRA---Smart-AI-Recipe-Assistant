@@ -1,5 +1,4 @@
 // components/Navbar.js
-import React from 'react';
 import Logo from './Logo';
 import NavItem from './NavItem';
 import AuthButton from './AuthButton';
@@ -7,9 +6,9 @@ import { auth } from '/src/auth';
 
 const Navbar = async () => {
   const session = await auth();
-  let image = false;
+  let image = undefined;
   const temp = session?.user?.image
-    if(temp != undefined)
+    if(!image && temp)
       image = temp;
       console.log("image : ", image)
   
@@ -30,14 +29,12 @@ const Navbar = async () => {
           <div className='flex items-center gap-3' >
            
             {session?.user?.name}
-            <img className="w-10 rounded-full"  src={image ? image : "profile.jpg"} alt="profile picture" />
+            <img className="w-10 rounded-full"  src={"profile.jpg"} alt="profile picture" />
           </div>
         ) : (<>
           <AuthButton label="Login" />
           <AuthButton label="Register" /></>
         )}
-
-        
         
       </div>
     </div>

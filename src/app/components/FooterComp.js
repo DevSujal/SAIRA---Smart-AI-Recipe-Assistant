@@ -49,10 +49,6 @@ const Footer = () => {
             </a>
           </div>
         </div>
-
-        <div className="text-center">
-          <p className="text-xs text-gray-500">&copy; {new Date().getFullYear()} Recipe Generator AI. All rights reserved.</p>
-        </div>
       </div>
     </footer>
   );

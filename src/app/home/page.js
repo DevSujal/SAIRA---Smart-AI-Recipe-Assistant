@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import RecipesContainer from "../components/RecipesContainer";
 import InputSection from "../components/InputSection";
 import RecipeWindow from "../components/RecipeWindow";
@@ -14,7 +14,7 @@ const HomePage = () => {
   const [currentRecipe, setCurrentRecipe] = React.useState("");
   const [response, setResponse] = React.useState([]);
   const [error, setError] = React.useState(null);
-
+  const [image, setImage] = useState("");
   async function handleClick() {
     if (!input) {
       setError("Input cannot be empty!");
@@ -101,20 +101,15 @@ React.useEffect(() => {
     setIsGenerating(false);
     window.scrollTo({ top: 750, behavior: "smooth" });
 }, [recipes]);
-
-  
- 
-  
-
   return (
     <div className="relative  bg-green-600 min-h-screen">
       {currentRecipe==="" ? <InputSection input={input} setInput={setInput} handleClick={handleClick} error={error} isGenerating={isGenerating} setIsGenerating={setIsGenerating}/>
       : 
       <RecipeWindow foodItem={recipes.find(recipe => recipe.name === currentRecipe)} 
-      setCurrentRecipe={setCurrentRecipe} />}
+      setCurrentRecipe={setCurrentRecipe} image = {image} />}
 
       {
-        recipes.length > 0 && <RecipesContainer tittle="Recipes for you" recipes={recipes} setCurrentRecipe={setCurrentRecipe}/>
+        recipes.length > 0 && <RecipesContainer tittle="Recipes for you" recipes={recipes} setCurrentRecipe={setCurrentRecipe} setImage = {setImage}/>
       }
       
     </div>
