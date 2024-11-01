@@ -1,9 +1,9 @@
-import { signIn } from "next-auth/react";
+import { signIn, signOut } from "next-auth/react";
 
 export async function doSocialLogin(formdata) {
   const action = formdata.get("action");
   await signIn(action, {
-    callbackUrl: "/home", // Correct option for specifying redirection after sign-in
+    callbackUrl: "/", // Correct option for specifying redirection after sign-in
   });
 }
 

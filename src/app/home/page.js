@@ -35,10 +35,9 @@ const HomePage = () => {
         throw new Error("Failed to generate prompt");
       }
 
-      const { response } = await res.json();
-      const promptData = JSON.parse(
-        response.substring(7, response.length - 5).trim()
-      );
+      const { data } = await res.json();
+      const promptData = data;
+
       const prompt =
         promptData?.dishName + " " + promptData?.ingredients.join(" ");
       const response2 = await fetch("/api/generate-recipe", {

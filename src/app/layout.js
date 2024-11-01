@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import FooterComp from "./components/FooterComp";
 import connect from "../dbconnect";
 import { SessionProvider } from "next-auth/react";
+import { auth } from "../auth"; 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -16,13 +17,13 @@ export default async function RootLayout({
   children,
 }) {
   await connect();
+  const session = await auth();
   return (
-
 
     <html lang="en" rel="icon" href="favicon.png" className="h-full">
       <SessionProvider>
         <body className={`${inter.className} h-full`}>
-          <Navbar />
+          <Navbar session={session} />
           <div className="pt-[64px]">
 
           {children}
