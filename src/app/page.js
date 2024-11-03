@@ -67,7 +67,6 @@ const HomePage = async () => {
   if (!session) {
     redirect("/login");
   }
-  {console.log(session.user.image)}
 
   return (
     <div className="w-full">

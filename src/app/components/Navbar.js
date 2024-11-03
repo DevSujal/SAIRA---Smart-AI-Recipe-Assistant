@@ -37,7 +37,6 @@ const Navbar = ({ session }) => {
       <div className="relative right flex gap-7 items-center">
         {session ? (
           <div className="flex items-center gap-3">
-            {console.log(image)}
             {name}
             
             <img
