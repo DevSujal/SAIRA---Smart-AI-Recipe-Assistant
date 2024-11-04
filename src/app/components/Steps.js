@@ -2,6 +2,7 @@ import React from 'react';
 import ListItem from './ListItem';
 import IngridentItem from './IngridentItem';
 
+
 const Steps = (props) => {
   return (
     <div className="p-8 md:p-10 bg-white border-y-2 border-green-400">
