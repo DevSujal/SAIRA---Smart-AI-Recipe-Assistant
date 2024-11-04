@@ -3,11 +3,12 @@ import fetch from "node-fetch"; // Use this in Node.js; skip this line in a brow
 const HUGGING_FACE_API_KEY = process.env.Hugging_Face_Api_key;
 
 async function generateDetailedPrompt(recipeName: String) {
-  const prompt = `Generate a detailed description for a recipe called "${recipeName}" with colors, textures, main ingredients, and style of presentation.`;
+  // const prompt = `Generate a detailed description for a recipe called "${recipeName}" with colors, textures, main ingredients, and style of presentation.`;
+  const prompt = `Describe the "${recipeName}" in detail, focusing on its vibrant colors, textures, main ingredients, and presentation style.`;
 
   try {
     const response = await fetch(
-      "https://api-inference.huggingface.co/models/google/flan-t5-small",
+      "https://api-inference.huggingface.co/models/google/flan-t5-base",
       {
         method: "POST",
         headers: {
@@ -25,12 +26,10 @@ async function generateDetailedPrompt(recipeName: String) {
     }
 
     const data = await response.json();
-    console.log("data : ", data);
     const detailedDescription =
       data[0]?.generated_text ||
       `A tasty and visually appealing dish named ${recipeName}.`;
 
-    console.log("Generated prompt:", detailedDescription);
     return detailedDescription;
   } catch (error) {
     console.error("Error generating prompt:", error);
