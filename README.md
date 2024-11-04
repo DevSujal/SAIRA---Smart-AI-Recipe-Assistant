@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# SAIRA - Smart AI Recipe Assistant
 
-First, run the development server:
+**SAIRA (Smart AI Recipe Assistant)** is an AI-driven recipe recommendation system designed to provide personalized recipe suggestions based on user preferences. Built entirely with Next.js for both backend and frontend, SAIRA integrates a Python-based recommendation engine through JavaScript using the `child_process` module, enhancing user experience with an interactive and responsive design.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 📜 Table of Contents
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Installation](#installation)
+- [Usage](#usage)
+- [API Integration](#api-integration)
+- [Contributing](#contributing)
+- [License](#license)
+- [Acknowledgements](#acknowledgements)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🌟 Features
+- **AI-Powered Recipe Recommendations:** Uses a TF-IDF model to recommend recipes based on user preferences.
+- **Interactive Recipe Interface:** Engaging UI that lets users browse, select, and explore various recipes.
+- **Dynamic Recipe Image Generation:** Automatically generates unique recipe images for a more immersive experience.
+- **Speech Recognition Integration:** Allows voice input for an enhanced user experience.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 🛠 Tech Stack
+- **Frontend & Backend:** Next.js
+- **Machine Learning:** TF-IDF, Cosine Similarity, Natural Language Processing (NLP)
+- **Database:** MongoDB
+- **APIs:** Hugging Face API for dynamic image generation
+- **Script Integration:** Python recommendation script executed through JavaScript using `child_process`
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## 🚀 Installation
 
-## Learn More
+1. **Clone the Repository:**
+   ```bash
+   git clone https://github.com/DevSujal/an-intelligent-system-for-receipe-assistance-using-artificial-intelligence.git
+   cd an-intelligent-system-for-receipe-assistance-using-artificial-intelligence
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+2. **Install Dependencies:**
+   - For the Next.js application:
+     ```bash
+     npm install
+     ```
+   - For the Python environment:
+     ```bash
+     cd backend
+     python -m venv myenv
+     source myenv/bin/activate
+     pip install -r requirements.txt
+     ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. **Set Up API Keys:**  
+   Create a `.env` file in the project root and add your Hugging Face API key:
+   ```plaintext
+   HUGGING_FACE_API_KEY=your_huggingface_api_key
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+4. **Run the Application:**
+   ```bash
+   # Start the Next.js server
+   npm run dev
+   ```
 
-## Deploy on Vercel
+5. **Run the Python Script:**  
+   In a separate terminal, activate your Python virtual environment and start the recommendation script:
+   ```bash
+   cd backend
+   source myenv/bin/activate
+   python recipe_recommendation.py
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 💡 Usage
+1. **Visit the Application:** Navigate to `http://localhost:3000` in your browser.
+2. **Get Recipe Recommendations:** Input your preferences, and SAIRA will suggest recipes tailored to your tastes.
+3. **Voice Commands:** Try using voice input for a hands-free experience.
+4. **View Recipe Details:** Click on a recommended recipe to see details, including ingredients and steps.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## 🌐 API Integration
+SAIRA uses the Hugging Face API to generate unique images for each recipe dynamically. The Python script leverages the TF-IDF model and cosine similarity for accurate recipe recommendations based on user input.
+
+## 🤝 Contributing
+Contributions are welcome! Please fork the repository, create a feature branch, and submit a pull request. For major changes, open an issue to discuss potential improvements.
+
+## 📜 License
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgements
+- [Next.js](https://nextjs.org/) for the frontend framework.
+- [Hugging Face](https://huggingface.co/) for dynamic image generation.
+- [MongoDB](https://www.mongodb.com/) for database support.
