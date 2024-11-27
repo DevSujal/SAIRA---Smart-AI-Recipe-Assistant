@@ -64,9 +64,7 @@ const HomePage = async () => {
     }
   ]);
 
-  if (!session) {
-    redirect("/login");
-  }
+
 
   return (
     <div className="w-full">

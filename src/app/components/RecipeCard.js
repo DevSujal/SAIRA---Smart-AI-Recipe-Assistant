@@ -10,8 +10,8 @@ const RecipeCard = (props) => {
       </h1>
       <div className='group relative rounded-xl overflow-hidden'>
         <img
-          className='object-cover w-[272px] h-[272px] transition-transform duration-500'
-          src={props.image}
+          className='object-cover w-[272px] h-56 transition-transform duration-500'
+          src={"vegetable_food.webp"}
           alt={props.recipe.name}
         />
         <div className='absolute flex items-end p-2 font-semibold text-sm top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-[#ffffffa3] opacity-0 group-hover:opacity-100 transition-opacity duration-500'>

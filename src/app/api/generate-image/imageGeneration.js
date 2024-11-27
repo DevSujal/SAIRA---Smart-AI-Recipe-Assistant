@@ -13,16 +13,16 @@ const MODEL_URL =
 
 export async function generateImage(prompt) {
   try {
-    const recipeDesc = await fetch("http://localhost:3000/api/generate-image-prompt", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ input: prompt }),
-    });
+    // const recipeDesc = await fetch("http://localhost:3000/api/generate-image-prompt", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({ input: prompt }),
+    // });
 
-    const { data } = await recipeDesc.json();
-    prompt = data;
+    // const { data } = await recipeDesc.json();
+    // prompt = data;
 
     console.log("Generating image for prompt:", prompt);
 
