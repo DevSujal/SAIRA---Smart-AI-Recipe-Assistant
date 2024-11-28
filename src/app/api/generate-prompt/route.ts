@@ -37,6 +37,7 @@ Expected format:
 
 Use English for all ingredients and keywords.
 Always include all fields in the response, using empty arrays if no values are found.
+give all the relevant ingredients for the recipe.
 `;
 
 async function validateInput(input) {
@@ -119,7 +120,7 @@ export async function POST(req: NextRequest) {
     }
 
     const response = await run(body.input);
-
+    console.log(response)
     return NextResponse.json({ data: response }, { status: 200 }); // Changed to 200 for successful creation
   } catch (error) {
     console.error("Error processing request:", error);
