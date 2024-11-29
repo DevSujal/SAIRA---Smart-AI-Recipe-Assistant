@@ -16,7 +16,7 @@ const RecipeWindow = ({ foodItem, setCurrentRecipe, image }) => {
   ];
   return (
     <div className="bg-white text-gray-800">
-        {console.log(image)}
+        {/* {console.log(image)} */}
       <div className="relative flex flex-col justify-between ">
         
         

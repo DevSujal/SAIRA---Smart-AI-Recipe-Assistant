@@ -8,7 +8,7 @@ const RecipesContainer = (props) => {
   const [randomValues, setRandomValues] = useState([]);
 
   useEffect(() => {
-    const values = props.recipes.map(() => ({
+    const values = props.recipes.map((recipes_images) => ({
       image: recipes_images[Math.floor(Math.random() * recipes_images.length)],
       rating: Math.floor(Math.random() * 10),
     }));
@@ -16,7 +16,7 @@ const RecipesContainer = (props) => {
   }, [props.recipes]);
 
   const handleClick = async (recipe) => {
-    console.log(recipe)
+    // console.log(recipe)
     try {
       props.setCurrentRecipe(recipe.name);
       props.setImage("");
@@ -33,7 +33,7 @@ const RecipesContainer = (props) => {
       }
       const data = await response2.json();
       const {image} = data;
-      console.log(image)
+      // console.log(image)
       props.setImage(image);
     } catch (e) {
       console.log(e);
@@ -50,7 +50,7 @@ const RecipesContainer = (props) => {
           props.recipes.map((recipe, index) => (
             <div
               key={index}
-              onClick={() => handleClick(recipe)}
+              onClick={() => props.setCurrentRecipe(recipe.name)}
               className="transform hover:scale-105 transition-transform duration-500"
             >
               <RecipeCard

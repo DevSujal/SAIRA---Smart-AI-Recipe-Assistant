@@ -67,7 +67,7 @@ export const {
   callbacks: {
     async jwt({ token, user }) {
       // Append user data to the JWT token
-      console.log(user);
+      // console.log(user);
       if (user) {
         token.userName = user.name; // Add username to the token
       }

@@ -51,6 +51,7 @@
    Create a `.env` file in the project root and add your Hugging Face API key:
    ```plaintext
    HUGGING_FACE_API_KEY=your_huggingface_api_key
+   GEMINI_API_KEY=your_gemini_api_key
    ```
 
 4. **Run the Application:**
