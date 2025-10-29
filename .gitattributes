@@ -1,0 +1,4 @@
+# Track large CSV files with Git LFS
+*.csv filter=lfs diff=lfs merge=lfs -text
+# Optionally track large pickle files
+*.pkl filter=lfs diff=lfs merge=lfs -text

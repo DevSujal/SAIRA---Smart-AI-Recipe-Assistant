@@ -13,7 +13,7 @@ if (!apiKey) {
 
 // Initialize AI client once, not on every request
 const genAI = new GoogleGenerativeAI(apiKey);
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+const model = genAI.getGenerativeModel({ model: "gemini-flash-lite-latest" });
 
 const generationConfig = {
   temperature: 0.7, // Reduced for more consistent output

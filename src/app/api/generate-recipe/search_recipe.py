@@ -4,12 +4,14 @@ from sklearn.metrics.pairwise import cosine_similarity
 import os
 import sys
 import json
+import gzip
 
 # Load the TF-IDF model and matrix
 script_dir = os.path.dirname(__file__)
 model_path = os.path.join(script_dir, 'tfidf_model.pkl')
 matrix_path = os.path.join(script_dir, 'tfidf_matrix.pkl')
 csv_path = os.path.join(script_dir, 'RAW_recipes.csv')
+csv_gz_path = os.path.join(script_dir, 'RAW_recipes.csv.gz')
 
 with open(model_path, 'rb') as file:
     loaded_tfidf = pickle.load(file)
@@ -17,8 +19,17 @@ with open(model_path, 'rb') as file:
 with open(matrix_path, 'rb') as file:
     loaded_tfidf_matrix = pickle.load(file)
 
-# Load the recipe DataFrame
-df_subset = pd.read_csv(csv_path, encoding='ISO-8859-1')
+# Load the recipe DataFrame (try compressed first, fallback to uncompressed)
+if os.path.exists(csv_gz_path):
+    # Use stderr for debug messages so they don't interfere with JSON output
+    print(f"Loading compressed CSV: {csv_gz_path}", file=sys.stderr)
+    with gzip.open(csv_gz_path, 'rt', encoding='ISO-8859-1') as f:
+        df_subset = pd.read_csv(f)
+elif os.path.exists(csv_path):
+    print(f"Loading uncompressed CSV: {csv_path}", file=sys.stderr)
+    df_subset = pd.read_csv(csv_path, encoding='ISO-8859-1')
+else:
+    raise FileNotFoundError(f"Neither {csv_gz_path} nor {csv_path} found")
 
 # Clean the DataFrame
 df_subset['tags'] = df_subset['tags'].apply(lambda x: ' '.join(x.strip('[]').replace("'", "").split(',')))

@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "render-build": "chmod +x ./build.sh && ./build.sh"
   },
   "dependencies": {
     "@babel/runtime": "^7.25.6",

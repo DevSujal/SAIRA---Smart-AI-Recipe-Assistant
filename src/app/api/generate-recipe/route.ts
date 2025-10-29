@@ -3,13 +3,30 @@ import { NextRequest, NextResponse } from "next/server";
 import { promisify } from "util";
 import path from "path";
 import fs from "fs"
+import zlib from "zlib"
 import csv from "csv-parser"
 const execPromise = promisify(exec);
 
 async function getFullRecipesDetails(map: Object) {
   return new Promise((resolve, reject) => {
     const recipes = [];
-    fs.createReadStream(path.resolve('src/app/api/generate-recipe/RAW_recipes.csv'))
+    const csvPath = path.resolve('src/app/api/generate-recipe/RAW_recipes.csv');
+    const csvGzPath = path.resolve('src/app/api/generate-recipe/RAW_recipes.csv.gz');
+    
+    // Try compressed file first, fallback to uncompressed
+    let readStream;
+    if (fs.existsSync(csvGzPath)) {
+      console.log('Reading compressed CSV:', csvGzPath);
+      readStream = fs.createReadStream(csvGzPath).pipe(zlib.createGunzip());
+    } else if (fs.existsSync(csvPath)) {
+      console.log('Reading uncompressed CSV:', csvPath);
+      readStream = fs.createReadStream(csvPath);
+    } else {
+      reject(new Error('CSV file not found (neither .csv nor .csv.gz)'));
+      return;
+    }
+    
+    readStream
       .pipe(csv())
       .on("data", (row) => {
         if (row.name in map) {
@@ -46,12 +63,9 @@ export async function POST(req: NextRequest) {
     // Execute the Python script asynchronously
     const { stdout, stderr } = await execPromise(command);
 
+    // Log stderr (debug messages) but don't treat it as an error
     if (stderr) {
-      console.error(`Python script error: ${stderr}`);
-      return NextResponse.json(
-        { error: "Python script error" },
-        { status: 500 }
-      );
+      console.log(`Python script logs: ${stderr}`);
     }
 
     // Parse the output from the Python script

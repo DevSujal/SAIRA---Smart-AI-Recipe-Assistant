@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: saira-recipe-assistant
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: chmod +x ./build.sh && ./build.sh
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        sync: false
+      - key: AUTH_SECRET
+        generateValue: true
+      - key: HUGGING_FACE_API_KEY
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GOOGLE_CLIENT_ID
+        sync: false
+      - key: GOOGLE_CLIENT_SECRET
+        sync: false
