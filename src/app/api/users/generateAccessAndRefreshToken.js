@@ -1,4 +1,4 @@
-import User from "../../models/user.model";
+import User from "../../../models/user.model";
 export const generateAccessRefreshToken = async (userId) => {
   try {
     const user = await User.findById(userId);
