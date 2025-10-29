@@ -34,7 +34,7 @@ Copy these from your `.env` file:
 
 ```
 MONGODB_URI=mongodb+srv://your_username:
-AUTH_SECRET=X16px/bSDZCk5RV0mkHbi6Yxkymtel5NHvabQwnsPlg=
+AUTH_SECRET=X16px/generate_random_secret
 HUGGING_FACE_API_KEY=(your key)
 GEMINI_API_KEY=(your key)
 GOOGLE_CLIENT_ID=(your id)

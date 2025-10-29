@@ -57,7 +57,7 @@ git push origin main
 5. Add Environment Variables:
    ```
    MONGODB_URI=mongodb+srv://your_username:
-   AUTH_SECRET=X16px/bSDZCk5RV0mkHbi6Yxkymtel5NHvabQwnsPlg=
+   AUTH_SECRET=X16px/generate_random_secret
    HUGGING_FACE_API_KEY=your_key
    GEMINI_API_KEY=your_key
    GOOGLE_CLIENT_ID=your_id
