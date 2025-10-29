@@ -33,7 +33,7 @@ npm run dev
 Copy these from your `.env` file:
 
 ```
-MONGODB_URI=mongodb+srv://vanshpotpose:vanshpotpose@receipe.oylt3.mongodb.net/receipe?retryWrites=true&w=majority
+MONGODB_URI=mongodb+srv://your_username:
 AUTH_SECRET=X16px/bSDZCk5RV0mkHbi6Yxkymtel5NHvabQwnsPlg=
 HUGGING_FACE_API_KEY=(your key)
 GEMINI_API_KEY=(your key)
